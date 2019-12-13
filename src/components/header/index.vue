@@ -3,15 +3,15 @@
     <!--logo-->
     <section class="nm-header-logo">
       <img :src="sys.logo" class="nm-header-logo-img" :alt="sys.title" :title="sys.title" />
-      <div class="nm-header-logo-text">{{sys.title}}</div>
+      <div class="nm-header-logo-text">{{ sys.title }}</div>
     </section>
     <!--导航栏-->
     <section class="nm-header-nav">
       <ul>
         <template v-for="menu in menus">
-          <li :class="['nm-header-nav-item',menu.id===curr?'active':'']" :key="menu.id">
+          <li :class="['nm-header-nav-item', menu.id === curr ? 'active' : '']" :key="menu.id">
             <a href="javascript:void(0)" @click.prevent="onNavClick(menu)">
-              <nm-icon class="nm-header-nav-item-icon" :name="menu.icon" :style="{color:menu.iconColor}" />
+              <nm-icon class="nm-header-nav-item-icon" :name="menu.icon" :style="{ color: menu.iconColor }" />
               <span class="nm-header-nav-item-text">{{ menu.name }}</span>
             </a>
           </li>
@@ -35,7 +35,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('app/system', { sys: state => state }),
+    ...mapState('app/system', { sys: s => s.config.base }),
     ...mapState('app/account', ['menus', 'routeMenus']),
     ...mapState('app/page', ['current'])
   },
@@ -59,7 +59,7 @@ export default {
     }
   },
   watch: {
-    'current'() {
+    current() {
       if (this.current.name && this.routeMenus) {
         let routeMenu = this.routeMenus.get(this.current.name)
         if (routeMenu) {

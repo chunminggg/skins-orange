@@ -1,11 +1,11 @@
 <template>
   <section class="nm-menus">
-    <div class="no-menus" v-if="!menus||menus.length<1">
+    <div class="no-menus" v-if="!menus || menus.length < 1">
       <nm-icon name="form" />
       <p>没有菜单</p>
     </div>
     <el-scrollbar v-else>
-      <el-menu :default-active="active" :unique-opened="menuUniqueOpened" :collapse="collapse" :collapse-transition="false">
+      <el-menu :default-active="active" :unique-opened="uniqueOpened" :collapse="collapse" :collapse-transition="false">
         <template v-for="item in menus">
           <menu-item v-if="item.show" :key="item.id" :menu="item" />
         </template>
@@ -19,7 +19,7 @@ import { mapState } from 'vuex'
 export default {
   components: { MenuItem },
   computed: {
-    ...mapState('app/system', ['menuUniqueOpened']),
+    ...mapState('app/system', { uniqueOpened: s => s.config.component.menu.uniqueOpened }),
     ...mapState('app/skins/classics/sidebar', ['collapse']),
     ...mapState('app/skins/classics', ['menus']),
     ...mapState('app/account', ['routeMenus']),
@@ -35,7 +35,7 @@ export default {
         }
         return '-1'
       },
-      set() { }
+      set() {}
     }
   }
 }
