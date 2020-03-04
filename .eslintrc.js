@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
   parserOptions: {
@@ -13,7 +13,7 @@ module.exports = {
   },
   globals: {
     $http: 'readonly',
-    particlesJS: 'readonly',
+    $const: 'readonly',
     BMap: 'readonly',
     BMAP_STATUS_SUCCESS: 'readonly'
   }

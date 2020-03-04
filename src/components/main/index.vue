@@ -1,5 +1,5 @@
 <template>
-  <section :class="['nm-main',fontSize,sidebarCollapse?'collapse':'']">
+  <section :class="['nm-main', fontSize, sidebarCollapse ? 'collapse' : '']">
     <section class="nm-main-left">
       <nm-menus />
     </section>
