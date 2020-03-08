@@ -11,12 +11,12 @@ export default {
     preview,
     themes: [
       {
-        name: 'default',
-        color: '#03a9f4'
+        name: 'blue-dark',
+        color: '#335285'
       },
       {
-        name: 'blue-light',
-        color: '#e4e7ed'
+        name: 'default',
+        color: '#03a9f4'
       }
     ]
   }

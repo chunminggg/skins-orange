@@ -1,112 +1,75 @@
 #{$prefix}header {
-    position: relative;
+  position: relative;
+  @include flex-row();
+  flex-shrink: 0;
+  height: 50px;
+  background-color: #03a9f4;
+
+  /*logo*/
+  &-logo {
     @include flex-row();
     flex-shrink: 0;
-    height: 80px;
-    background-color: #03a9f4;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
 
-    /*logo*/
-    &-logo {
-        @include flex-row();
-        flex-shrink: 0;
-        height: 100%;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
-        z-index: 1;
-
-        &-img {
-            flex-shrink: 0;
-            margin: 5px 11px;
-            width: 60px;
-            height: 60px;
-        }
-
-        &-text {
-            flex-grow: 1;
-            text-align: center;
-            @include vertical-center(80px);
-            font-size: 30px;
-            color: #fff;
-            white-space: nowrap;
-        }
+    &-img {
+      flex-shrink: 0;
+      margin: 5px 11px;
+      width: 40px;
+      height: 40px;
     }
 
-    &-nav {
-        display: inline-block;
-        flex-grow: 1;
-        margin-left: 15px;
-        overflow: hidden;
-
-        &-item {
-            padding: 0 3px;
-            float: left;
-
-            a {
-                position: relative;
-                padding: 10px 15px;
-                display: inline-block;
-                text-decoration: none;
-                color: #e4e7ed;
-                text-align: center;
-                height: 80px;
-                box-sizing: border-box;
-                cursor: pointer;
-                transition: background-color 0.25s ease-in-out;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 50%;
-                    width: 0;
-                    height: 3px;
-                    background: #e6a23c;
-                    transition: all .25s ease-in-out;
-                }
-            }
-
-            &-icon {
-                font-size: 35px;
-            }
-
-            &-text {
-                display: block;
-                margin-top: 5px;
-                font-size: 14px;
-            }
-
-            &:hover,
-            &.active {
-
-                a {
-                    color: #fff;
-                    background-color: #29d;
-
-                    &::after {
-                        left: 0;
-                        width: 100%;
-                    }
-
-                }
-            }
-        }
+    &-text {
+      flex-grow: 1;
+      text-align: center;
+      @include vertical-center(50px);
+      font-size: 20px;
+      color: #fff;
+      white-space: nowrap;
     }
+  }
 
-    &-toolbar {
-        #{$prefix}toolbar {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 80px;
-            background-color: #03a9f4;
+  &-nav {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0 200px 0 20px;
+    .el-tabs {
+      @include vertical-center(50px);
 
-            &-button {
-                width: 50px;
+      .el-tabs__header {
+        margin: 0;
+        @include vertical-center(50px);
+        box-sizing: border-box;
+        border-bottom: none;
+        .el-tabs__nav-wrap {
+          padding: 0 30px;
 
-                #{$prefix}icon {
-                    font-size: 35px;
-                }
+          .el-tabs__nav-next,
+          .el-tabs__nav-prev {
+            font-size: 25px;
+            line-height: 50px;
+          }
+          .el-tabs__nav {
+            border: none;
+
+            .el-tabs__item {
+              border: none;
+              @include vertical-center(50px);
+              transition: all 0.25s ease-in-out;
+
+              #{$prefix}icon {
+                font-size: 21px;
+              }
             }
+          }
         }
+      }
     }
+  }
+
+  #{$prefix}toolbar {
+    flex-shrink: 0;
+  }
 }

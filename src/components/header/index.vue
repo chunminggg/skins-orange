@@ -7,21 +7,14 @@
     </section>
     <!--导航栏-->
     <section class="nm-header-nav">
-      <ul>
-        <template v-for="menu in menus">
-          <li :class="['nm-header-nav-item', menu.id === curr ? 'active' : '']" :key="menu.id">
-            <a href="javascript:void(0)" @click.prevent="onNavClick(menu)">
-              <nm-icon class="nm-header-nav-item-icon" :name="menu.icon" :style="{ color: menu.iconColor }" />
-              <span class="nm-header-nav-item-text">{{ menu.name }}</span>
-            </a>
-          </li>
-        </template>
-      </ul>
+      <el-tabs v-model="tabName" type="card" @tab-click="onTabClick">
+        <el-tab-pane v-for="menu in menus" :key="menu.id" :name="menu.id" @click="onTabClick(menu)"
+          ><span slot="label"> <nm-icon v-if="menu.icon" :name="menu.icon" :style="{ color: menu.iconColor }" />{{ menu.name }}</span>
+        </el-tab-pane>
+      </el-tabs>
     </section>
     <!--工具栏-->
-    <section class="nm-header-toolbar">
-      <nm-toolbar />
-    </section>
+    <nm-toolbar />
   </section>
 </template>
 <script>
@@ -31,7 +24,7 @@ import { open } from 'netmodular-ui/packages/utils/menu'
 export default {
   data() {
     return {
-      curr: ''
+      tabName: ''
     }
   },
   computed: {
@@ -40,38 +33,56 @@ export default {
     ...mapState('app/page', ['current'])
   },
   methods: {
-    ...mapMutations('app/skins/classics', ['setMenus']),
-    onNavClick(menu) {
-      this.curr = menu.id
-      // 节点类型
-      if (menu.type === 0) {
-        if (menu.children) {
-          this.setMenus(menu.children)
-          if (menu.children && menu.children[0]) {
-            open(this.$router, menu.children[0])
+    ...mapMutations('app/skins/classics', ['setLeftMenus']),
+    onTabClick(tab) {
+      //如果点击的是当前已打开的菜单，则不执行任何操作
+      if (tab.name === this.getCurrTabName()) return
+      let menu = this.menus.find(m => m.id === tab.name)
+      if (menu) {
+        // 如果是节点类型的菜单
+        if (menu.type === 0) {
+          const { children } = menu
+          this.setLeftMenus(children)
+          if (children && children.length > 0) {
+            open(this.$router, children[0])
           }
         } else {
-          this.setMenus([])
+          open(this.$router, menu)
         }
-      } else {
-        open(this.$router, menu)
       }
-    }
-  },
-  watch: {
-    current() {
+    },
+    getCurrTabName() {
       if (this.current.name && this.routeMenus) {
         let routeMenu = this.routeMenus.get(this.current.name)
         if (routeMenu) {
           for (var i = 0; i < this.menus.length; i++) {
-            if (this.menus[i].id === routeMenu.menu.rootId) {
-              this.curr = this.menus[i].id
-              this.setMenus(this.menus[i].children)
+            let menu = this.menus[i]
+            if (menu.id === routeMenu.menu.rootId) {
+              return menu.id
+            }
+          }
+        }
+      }
+      return null
+    }
+  },
+  watch: {
+    current() {
+      let leftMenus = []
+      if (this.current.name && this.routeMenus) {
+        let routeMenu = this.routeMenus.get(this.current.name)
+        if (routeMenu) {
+          for (var i = 0; i < this.menus.length; i++) {
+            let menu = this.menus[i]
+            if (menu.id === routeMenu.menu.rootId) {
+              this.tabName = menu.id
+              leftMenus = menu.children
               break
             }
           }
         }
       }
+      this.setLeftMenus(leftMenus)
     }
   }
 }

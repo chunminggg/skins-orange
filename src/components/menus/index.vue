@@ -1,12 +1,8 @@
 <template>
-  <section class="nm-menus">
-    <div class="no-menus" v-if="!menus || menus.length < 1">
-      <nm-icon name="form" />
-      <p>没有菜单</p>
-    </div>
-    <el-scrollbar v-else>
+  <section v-if="leftMenus && leftMenus.length > 0" class="nm-menus">
+    <el-scrollbar>
       <el-menu :default-active="active" :unique-opened="uniqueOpened" :collapse="collapse" :collapse-transition="false">
-        <template v-for="item in menus">
+        <template v-for="item in leftMenus">
           <menu-item v-if="item.show" :key="item.id" :menu="item" />
         </template>
       </el-menu>
@@ -21,7 +17,7 @@ export default {
   computed: {
     ...mapState('app/system', { uniqueOpened: s => s.config.component.menu.uniqueOpened }),
     ...mapState('app/skins/classics/sidebar', ['collapse']),
-    ...mapState('app/skins/classics', ['menus']),
+    ...mapState('app/skins/classics', ['leftMenus']),
     ...mapState('app/account', ['routeMenus']),
     ...mapState('app/page', ['current']),
     active: {

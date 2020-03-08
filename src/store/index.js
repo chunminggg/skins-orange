@@ -2,11 +2,13 @@ import sidebar from 'netmodular-ui/packages/skins/pretty/store/modules/sidebar'
 export default {
   namespaced: true,
   state: {
-    menus: []
+    leftMenus: [],
+    hideLeftMenus: false
   },
   mutations: {
-    setMenus(state, menus) {
-      state.menus = menus
+    setLeftMenus(state, menus) {
+      state.leftMenus = menus
+      state.hideLeftMenus = !menus || menus.length < 1
     }
   },
   modules: {
