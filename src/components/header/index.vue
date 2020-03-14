@@ -2,8 +2,8 @@
   <section class="nm-header">
     <!--logo-->
     <section class="nm-header-logo">
-      <img :src="sys.logo" class="nm-header-logo-img" :alt="sys.title" :title="sys.title" />
-      <div class="nm-header-logo-text">{{ sys.title }}</div>
+      <img :src="logoUrl" class="nm-header-logo-img" :alt="title" :title="title" />
+      <div class="nm-header-logo-text">{{ title }}</div>
     </section>
     <!--导航栏-->
     <section class="nm-header-nav">
@@ -18,7 +18,7 @@
   </section>
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 import { open } from 'netmodular-ui/packages/utils/menu'
 
 export default {
@@ -28,7 +28,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('app/system', { sys: s => s.config.base }),
+    ...mapGetters('app/system', ['logoUrl']),
+    ...mapState('app/system', { title: s => s.config.base.title }),
     ...mapState('app/account', ['menus', 'routeMenus']),
     ...mapState('app/page', ['current'])
   },
