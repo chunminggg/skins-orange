@@ -1,7 +1,7 @@
 <template>
   <div class="nm-wrapper">
     <nm-header />
-    <nm-tabnav>
+    <nm-tabnav v-if="showTabnav">
       <template v-slot:before>
         <div :class="['nm-sidebar-toggle-btn', hideLeftMenus ? 'disabled' : '']">
           <a @click.prevent="sidebarToggle">
@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     ...mapState('app/skins/classics', ['leftMenus', 'hideLeftMenus']),
-    ...mapState('app/skins/classics/sidebar', { sidebarCollapse: 'collapse' })
+    ...mapState('app/skins/classics/sidebar', { sidebarCollapse: 'collapse' }),
+    ...mapState('app/system', { showTabnav: s => s.config.component.tabnav.enabled })
   },
   provide() {
     return {

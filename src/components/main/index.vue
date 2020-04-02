@@ -6,9 +6,11 @@
     <section class="nm-main-right">
       <section class="nm-content">
         <transition name="fade-transverse">
-          <keep-alive :include="keepAlive">
+          <keep-alive v-if="showTabnav" :include="keepAlive">
             <router-view v-if="routerViewVisible" :key="$route.path" />
           </keep-alive>
+
+          <router-view v-if="!showTabnav && routerViewVisible" :key="$route.path" />
         </transition>
       </section>
     </section>
@@ -27,7 +29,8 @@ export default {
   },
   computed: {
     ...mapState('app/skins/classics', { hideLeftMenus: s => s.hideLeftMenus, sidebarCollapse: s => s.sidebar.collapse }),
-    ...mapState('app/page', ['keepAlive'])
+    ...mapState('app/page', ['keepAlive']),
+    ...mapState('app/system', { showTabnav: s => s.config.component.tabnav.enabled })
   }
 }
 </script>
