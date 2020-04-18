@@ -30,7 +30,7 @@ export default {
   computed: {
     ...mapState('app/skins/classics', { hideLeftMenus: s => s.hideLeftMenus, sidebarCollapse: s => s.sidebar.collapse }),
     ...mapState('app/page', ['keepAlive']),
-    ...mapState('app/system', { showTabnav: s => s.config.component.tabnav.enabled })
+    ...mapState('app/config', { showTabnav: s => s.component.tabnav.enabled })
   }
 }
 </script>

@@ -28,8 +28,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('app/system', ['logoUrl']),
-    ...mapState('app/system', { title: s => s.config.base.title }),
+    ...mapGetters('app/config', ['logoUrl']),
+    ...mapState('app/config', { title: s => s.system.title }),
     ...mapState('app/account', ['menus', 'routeMenus']),
     ...mapState('app/page', ['current'])
   },

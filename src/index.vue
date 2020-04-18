@@ -27,7 +27,7 @@ export default {
   computed: {
     ...mapState('app/skins/classics', ['leftMenus', 'hideLeftMenus']),
     ...mapState('app/skins/classics/sidebar', { sidebarCollapse: 'collapse' }),
-    ...mapState('app/system', { showTabnav: s => s.config.component.tabnav.enabled })
+    ...mapState('app/config', { showTabnav: s => s.component.tabnav.enabled })
   },
   provide() {
     return {

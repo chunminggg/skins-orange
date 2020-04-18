@@ -29,7 +29,7 @@ import MenuItem from 'netmodular-ui/packages/skins/pretty/components/menus/item'
 export default {
   components: { MenuItem },
   computed: {
-    ...mapState('app/system', { uniqueOpened: s => s.config.component.menu.uniqueOpened }),
+    ...mapState('app/config', { uniqueOpened: s => s.component.menu.uniqueOpened }),
     ...mapState('app/skins/classics/sidebar', ['collapse']),
     ...mapState('app/skins/classics', ['leftMenus']),
     ...mapState('app/account', ['routeMenus']),
