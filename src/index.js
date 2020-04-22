@@ -6,7 +6,7 @@ export default {
   component,
   store,
   options: {
-    name: '??',
+    name: '经典',
     code: 'classics',
     preview,
     themes: [
