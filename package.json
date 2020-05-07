@@ -1,8 +1,8 @@
 {
-  "name": "netmodular-skins-classics",
+  "name": "netmodular-skins-billy",
   "version": "1.0.7",
-  "description": "NetModular皮肤组件classics",
-  "author": "Oldli",
+  "description": "礼橙皮肤包",
+  "author": "billy",
   "license": "ISC",
   "main": "src/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "pub": "cd ./script && npm_publish.ps1"
   },
   "dependencies": {
-    "netmodular-ui": "^1.7.7"
+    "netmodular-ui": "1.6.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.1",

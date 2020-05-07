@@ -1,67 +1,30 @@
-@import '~netmodular-ui/packages/styles/mixins';
-@import '~netmodular-ui/packages/styles/variables';
+@import './mixins';
+@import './variables';
 
-#{$prefix}skin-classics {
+#{$prefix}skin-pretty {
   #{$prefix}wrapper {
     margin: 0;
     padding: 0;
     height: 100%;
-    @include flex-column();
-
-    #{$prefix}tabnav {
-      #{$prefix}sidebar-toggle-btn {
-        padding: 0;
-        flex-shrink: 0;
-
-        a {
-          padding: 0 5px;
-          display: inline-block;
-          @include vertical-center(50px);
-          font-size: 25px;
-          text-align: center;
-          cursor: pointer;
-          text-decoration: none;
-          box-sizing: border-box;
-          transition: all 0.2s ease-in-out;
-        }
-
-        &.disabled {
-          a {
-            cursor: not-allowed;
-          }
-        }
-      }
-      .el-tabs__nav-wrap {
-        margin-bottom: 0;
-      }
-    }
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
   }
 
-  @mixin sidebar-toggle-btn($height) {
-    #{$prefix}tabnav {
-      #{$prefix}sidebar-toggle-btn {
-        a {
-          @include vertical-center($height);
-          font-size: $height - 15;
-        }
-      }
-    }
-  }
-
-  &.font-size-mini {
-    @include sidebar-toggle-btn(35px);
-  }
-
-  &.font-size-small {
-    @include sidebar-toggle-btn(40px);
-  }
-
-  &.font-size-medium {
-    @include sidebar-toggle-btn(45px);
-  }
-
+  @import './components/sidebar/index';
   @import './components/header/index';
   @import './components/main/index';
 
   @import './themes/index';
+
+  #{$prefix}header-userinfo-dropdown {
+    #{$prefix}button {
+      padding: 6px 0;
+      font-size: 13px;
+
+      #{$prefix}icon {
+        font-size: 1.5em;
+      }
+    }
+  }
 }

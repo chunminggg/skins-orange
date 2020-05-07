@@ -1,8 +1,8 @@
 <template>
-  <section v-if="leftMenus && leftMenus.length > 0" class="nm-menus">
+  <section class="nm-menus">
     <el-scrollbar>
       <el-menu :default-active="active" :unique-opened="uniqueOpened" :collapse="collapse" :collapse-transition="false">
-        <template v-for="menu in leftMenus">
+        <template v-for="menu in menus">
           <el-submenu v-if="menu.type === 0" :key="menu.id" :index="menu.id + ''">
             <template v-slot:title>
               <nm-icon :name="menu.icon" class="nm-menus-icon" :style="{ color: menu.iconColor }" />
@@ -24,16 +24,16 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { open } from 'netmodular-ui/packages/utils/menu'
-import MenuItem from 'netmodular-ui/packages/skins/pretty/components/menus/item'
+import { open } from '../.././utils/menu'
+import MenuItem from './item'
+
 export default {
   components: { MenuItem },
   computed: {
+    ...mapState('app/account', ['menus', 'routeMenus']),
     ...mapState('app/config', { uniqueOpened: s => s.component.menu.uniqueOpened }),
-    ...mapState('app/skins/classics/sidebar', ['collapse']),
-    ...mapState('app/skins/classics', ['leftMenus']),
-    ...mapState('app/account', ['routeMenus']),
     ...mapState('app/page', ['current']),
+    ...mapState('app/skins/pretty/sidebar', ['collapse']),
     active: {
       get() {
         if (this.current.name && this.routeMenus) {
@@ -53,7 +53,6 @@ export default {
       if (e.$el.classList.contains('is-active')) {
         return
       }
-
       open(this.$router, menu)
     }
   }
