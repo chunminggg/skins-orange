@@ -1,15 +1,15 @@
 # NetModular.Skins.Classics
 
-[NetModular](https://github.com/iamoldli/NetModular)的前端皮肤组件`classics`
+[NetModular](https://github.com/chunminggg/skins-orange)的前端皮肤组件`classics`
 
 ## 安装
 
 ```
-npm i -S netmodular-skins-classics
+npm i -S netmodular-skins-billy
 ```
 
 ```js
-import ClassicsSkin from 'netmodular-skins-classics'
+import ClassicsSkin from 'netmodular-skins-billy'
 
 WebHost.registerSkin(ClassicsSkin)
 ```
