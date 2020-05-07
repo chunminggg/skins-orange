@@ -54,22 +54,59 @@
 
 .el-menu,
 .el-menu--vertical {
-  background-color: $pretty-menus-background-color !important;
-
-  .el-menu-item,
-  .el-submenu__title {
+  // background-color: $pretty-menus-background-color !important;
+   ul.el-menu.el-menu--inline{
+      background: #000 !important;
+      border-left: 3px solid #ffaa49;
+   }
+  .el-menu-item {
     color: $pretty-menus-menu-color !important;
-
     &:active,
     &:focus,
     &:hover {
-      background: $pretty-menus-menu-hover-background-color;
-      color: $pretty-menus-menu-hover-color !important;
+      // background: $pretty-menus-menu-hover-background-color;
+      // color: $pretty-menus-menu-hover-color !important;
+     background:none; 
+     color: #ffaa4a !important;
     }
 
     &.is-active {
-      background: $pretty-menus-menu-active-background-color;
-      color: $pretty-menus-menu-active-color !important;
+      background:none; 
+      color: #ffaa4a !important;
+    }
+  }
+   .el-submenu{
+    color: $pretty-menus-menu-color !important;
+      
+    &:active,
+    &:focus,
+    &:hover {
+      // background: $pretty-menus-menu-hover-background-color;
+      // color: $pretty-menus-menu-hover-color !important;
+      background: linear-gradient(to right,#ffa180, #ffaa49);
+      border-radius: 0 !important;
+    }
+
+    &.is-opened {
+       background: linear-gradient(to right,#ffa180, #ffaa49);
+      border-radius: 0 !important;
+    }
+  }
+  .el-submenu__title {
+    color: $pretty-menus-menu-color !important;
+      
+    &:active,
+    &:focus,
+    &:hover {
+      // background: $pretty-menus-menu-hover-background-color;
+      // color: $pretty-menus-menu-hover-color !important;
+      background: linear-gradient(to right,#ffa180, #ffaa49);
+      border-radius: 0 !important;
+    }
+
+    &.is-active {
+       background: linear-gradient(to right,#ffa180, #ffaa49);
+      border-radius: 0 !important;
     }
   }
 }

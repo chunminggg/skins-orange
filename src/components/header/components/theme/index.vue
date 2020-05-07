@@ -31,7 +31,8 @@ export default {
 <style>
 .el-dropdown-link {
   cursor: pointer;
-  color: #409eff;
+  /* color: #409eff; */
+  color: #ffa17f;
 }
 .el-icon-arrow-down {
   font-size: 12px;

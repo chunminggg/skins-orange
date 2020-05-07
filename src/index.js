@@ -12,7 +12,8 @@ export default {
     themes: [
       {
         name: 'default',
-        color: '#03a9f4'
+        // color: '#03a9f4'
+        color: '#ffaa49'
       },
       {
         name: 'blue-light',
