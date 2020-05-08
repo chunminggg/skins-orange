@@ -1,7 +1,7 @@
 {
-  "name": "netmodular-skins-billy",
-  "version": "1.0.7",
-  "description": "礼橙皮肤包",
+  "name": "netmodular-skins-golden",
+  "version": "1.0.0",
+  "description": "礼橙皮肤包-土豪金",
   "author": "billy",
   "license": "ISC",
   "main": "src/index.js",

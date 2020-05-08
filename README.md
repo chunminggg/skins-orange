@@ -5,11 +5,11 @@
 ## 安装
 
 ```
-npm i -S netmodular-skins-billy
+npm i -S netmodular-skins-golden
 ```
 
 ```js
-import ClassicsSkin from 'netmodular-skins-billy'
+import ClassicsSkin from 'netmodular-skins-golden'
 
 WebHost.registerSkin(ClassicsSkin)
 ```
