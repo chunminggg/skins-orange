@@ -22,15 +22,17 @@
     #{$prefix}breadcrumb {
       .el-breadcrumb__item {
         .el-breadcrumb__inner {
-          color: $pretty-breadcrumb-color;
-
+          // color: $pretty-breadcrumb-color;
+          color:#222;
           &.is-link {
-            color: $pretty-breadcrumb-link-color;
+            // color: $pretty-breadcrumb-link-color;
+            color:#222;
           }
         }
 
         .el-breadcrumb__separator {
-          color: $pretty-breadcrumb-separator-color;
+          // color: $pretty-breadcrumb-separator-color;
+          color: #aaa;
         }
       }
     }
@@ -55,12 +57,13 @@
 .el-menu,
 .el-menu--vertical {
   // background-color: $pretty-menus-background-color !important;
+  background: #fff !important;
    ul.el-menu.el-menu--inline{
-      background: #000 !important;
-      // border-left: 3px solid #ffaa49;
+      background: #fff !important;
    }
   .el-menu-item {
-    color: $pretty-menus-menu-color !important;
+    // color: $pretty-menus-menu-color !important;
+     color: #444 !important;
     &:active,
     &:focus,
     &:hover {
@@ -71,13 +74,13 @@
     }
 
     &.is-active {
-      background:none; 
+      background:#fff; 
       color: #ffaa4a !important;
     }
   }
    .el-submenu{
-    color: $pretty-menus-menu-color !important;
-      
+    // color: $pretty-menus-menu-color !important;
+    color: #444 !important;
     &:active,
     &:focus,
     &:hover {
@@ -88,13 +91,13 @@
     }
 
     &.is-opened {
-       background: linear-gradient(to right,#ffa180, #ffaa49);
+      //  background: linear-gradient(to right,#ffa180, #ffaa49);
       border-radius: 0 !important;
     }
   }
   .el-submenu__title {
-    color: $pretty-menus-menu-color !important;
-      
+    // color: $pretty-menus-menu-color !important;
+    color: #444 !important;
     &:active,
     &:focus,
     &:hover {
@@ -105,7 +108,7 @@
     }
 
     &.is-active {
-       background: linear-gradient(to right,#ffa180, #ffaa49);
+      //  background: linear-gradient(to right,#ffa180, #ffaa49);
       border-radius: 0 !important;
     }
   }
